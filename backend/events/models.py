@@ -12,20 +12,21 @@ class Event(models.Model):
 
     # maybe we should make our own registrations with automatic delete?
 
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.event_name
 
 
 class Partner(models.Model):
     partner_name = models.CharField(max_length=50)
-    partner_image = models.ImageField()
+    partner_image = models.ImageField(upload_to='events/partner_images')
 
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.partner_name
 
 
 class Picture(models.Model):
-    picture = models.ImageField()
+    picture_name = models.CharField(max_length=50)
+    picture = models.ImageField(upload_to='events/pictures')
 
-    def __unicode__(self):
-        return self.title
+    def __str__(self):
+        return self.picture_name
