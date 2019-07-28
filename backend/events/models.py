@@ -3,16 +3,19 @@ from django.db import models
 
 class Event(models.Model):
     event_name = models.CharField(max_length=50)
-    event_banner = models.ImageField()
-    event_background = models.ImageField()
-    event_pictures = models.ForeignKey('Picture', on_delete=models.CASCADE)
+    event_banner = models.ImageField(blank=True, upload_to='events/general_pictures')
+    event_background = models.ImageField(blank=True, upload_to='events/general_pictures')
+    event_pictures = models.ManyToManyField('Picture', blank=True)
     event_description = models.TextField(max_length=500)
-    event_partners = models.ForeignKey('Partner', on_delete=models.PROTECT)
-    event_google_form = models.TextField()
+    event_partners = models.ManyToManyField('Partner', blank=True)
+    event_google_form = models.TextField(blank=True)
 
     # maybe we should make our own registrations with automatic delete?
 
     def __str__(self):
+        return self.event_name
+
+    def __unicode__(self):
         return self.event_name
 
 
