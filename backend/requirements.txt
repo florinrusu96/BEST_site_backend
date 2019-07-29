@@ -1,4 +1,6 @@
-django
-djangorestframework
-django-cors-headers
-Pillow
+Django==2.2.3
+django-cors-headers==3.0.2
+djangorestframework==3.10.1
+Pillow==6.1.0
+pytz==2019.1
+sqlparse==0.3.0

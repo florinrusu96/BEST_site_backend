@@ -9,9 +9,6 @@ class BlogPost(models.Model):
     english_content = models.TextField(default=None)
     updated_on = models.DateField(auto_now=True)
     created_on = models.DateField(auto_now_add=True)
-
-    def __unicode__(self):
-        return self.title
-
+    
     def __str__(self):
         return self.title
