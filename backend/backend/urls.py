@@ -15,11 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import settings 
 
 urlpatterns = [
     path('', include('generic.urls')),
     path('', include('blog_posts.urls')),
     path('', include('events.urls')),
+    path('admin_tools/', include('admin_tools.urls')),
+    # fobi view URLs
+    path('fobi/', include('fobi.urls.view')),
+    # fobi edit URLs
+    path('admin/fobi/', include('fobi.urls.edit')),
+    # fobi DB store plugin URLs
+    path('fobi/plugins/form-handlers/db-store/', include('fobi.contrib.plugins.form_handlers.db_store.urls')),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 ]
+
+# Conditionally including django-rest-framework integration app
+if 'fobi.contrib.apps.drf_integration' in settings.INSTALLED_APPS:
+    from fobi.contrib.apps.drf_integration.urls import fobi_router
+    urlpatterns += [ path('api/', include(fobi_router.urls)) ]
