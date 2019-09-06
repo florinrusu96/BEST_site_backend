@@ -7,5 +7,4 @@ from .models import Partner
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
-        fields = ('name', 'logo', 'group')
-
+        fields = ("name", "logo", "group")

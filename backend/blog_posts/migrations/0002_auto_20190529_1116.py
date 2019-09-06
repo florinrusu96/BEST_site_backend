@@ -5,19 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('blog_posts', '0001_initial'),
-    ]
+    dependencies = [("blog_posts", "0001_initial")]
 
     operations = [
         migrations.AddField(
-            model_name='blogpost',
-            name='english_content',
+            model_name="blogpost",
+            name="english_content",
             field=models.TextField(default=None),
         ),
         migrations.AlterField(
-            model_name='blogpost',
-            name='content',
-            field=models.TextField(default=None),
+            model_name="blogpost", name="content", field=models.TextField(default=None)
         ),
     ]

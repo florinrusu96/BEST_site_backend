@@ -9,6 +9,7 @@ class PartnerList(generics.ListAPIView):
     queryset = Partner.objects.all()
     serializer_class = PartnerSerializer
 
+
 class PartnerDetail(generics.RetrieveAPIView):
     queryset = Partner.objects.all()
     serializer_class = PartnerSerializer

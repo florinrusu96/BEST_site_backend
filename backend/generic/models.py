@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Partner(models.Model):
     name = models.CharField(max_length=64, unique=True)
     logo = models.ImageField()
