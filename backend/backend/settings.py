@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "events.apps.EventsConfig",
     "generic.apps.GenericConfig",
+    "forms.apps.FormsConfig",
     "blog_posts.apps.BlogPostsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -112,5 +113,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# ToDO For now it send emails to the console, we need to get the email details from someone, and have a separate file with the details
 
 CORS_ORIGIN_ALLOW_ALL = True
