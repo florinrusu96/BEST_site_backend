@@ -1,4 +1,10 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch.dispatcher import receiver
+
+from .core.signals import event_removal_handler
+from .core.signals import partner_removal_handler
+from .core.signals import picture_removal_handler
 
 
 class Event(models.Model):
@@ -33,3 +39,10 @@ class Picture(models.Model):
 
     def __str__(self):
         return self.picture_name
+
+
+# Delete signal connections for models
+
+post_delete.connect(event_removal_handler, Event)
+post_delete.connect(partner_removal_handler, Partner)
+post_delete.connect(picture_removal_handler, Picture)
