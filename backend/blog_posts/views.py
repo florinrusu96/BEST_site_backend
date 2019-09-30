@@ -7,7 +7,7 @@ from .permissions import IsOwnerOrReadOnly
 from .serializers import BlogPostSerializer, UserSerializer
 
 
-class BlogPostList(generics.ListCreateAPIView):
+class BlogPostList(generics.ListAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
@@ -16,7 +16,7 @@ class BlogPostList(generics.ListCreateAPIView):
         serializer.save(author=self.request.user)
 
 
-class BlogPostDetail(generics.RetrieveUpdateDestroyAPIView):
+class BlogPostDetail(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
